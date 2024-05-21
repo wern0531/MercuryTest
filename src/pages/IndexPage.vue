@@ -128,9 +128,10 @@ const tempData = ref({
 // answer
 const getAllData = () => {
   axios.get('https://dahua.metcfire.com.tw/api/CRUDTest/a').then((res) => {
-    res.data.map((item) => {
-      blockData.value.push(item);
-    });
+    // res.data.map((item) => {
+    //   blockData.value.push(item);
+    // });
+    blockData.value = res.data;
   });
 };
 
@@ -155,7 +156,11 @@ const handleClickOption = (btn, data) => {
 const handleDelete = (data) => {
   console.log(data.id);
   if (confirm(`確定要刪除 ${data.name} ?`)) {
-    axios.delete(`https://dahua.metcfire.com.tw/api/CRUDTest/${data.id}`);
+    axios
+      .delete(`https://dahua.metcfire.com.tw/api/CRUDTest/${data.id}`)
+      .then((res) => {
+        getAllData();
+      });
   }
 };
 

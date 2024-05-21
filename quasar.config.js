@@ -62,6 +62,7 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
+      publicPath: '/MercuryTest/',
       env: {
         API: 'https://dahua.metcfire.com.tw/',
       },
